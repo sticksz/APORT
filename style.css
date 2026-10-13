@@ -34,6 +34,7 @@ button {
 }
 
 .site {
+  /* These color variables are shared by the whole site. */
   --bg: #f7f8fc;
   --surface: #fff;
   --text: #202334;
@@ -47,6 +48,7 @@ button {
 }
 
 .site.dark {
+  /* Dark mode changes the shared colors; the rest of the styles stay the same. */
   --bg: #11131d;
   --surface: #1b1e2b;
   --text: #f4f5fb;
