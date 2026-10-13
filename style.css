@@ -1,7 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap");
-
 :root {
-  font-family: "DM Sans", sans-serif;
+  font-family: Arial, sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
@@ -46,7 +44,6 @@ button {
   min-height: 100vh;
   background: var(--bg);
   color: var(--text);
-  transition: background 0.25s ease, color 0.25s ease;
 }
 
 .site.dark {
@@ -66,6 +63,7 @@ button {
   max-width: 1120px;
   margin: 0 auto;
   padding: 22px 28px;
+  border-bottom: 1px solid var(--border);
 }
 
 .logo-button {
@@ -76,7 +74,8 @@ button {
 }
 
 .logo {
-  font: 800 1.45rem Manrope, sans-serif;
+  font-size: 1.45rem;
+  font-weight: 700;
   letter-spacing: -1px;
 }
 
@@ -87,24 +86,24 @@ h1 span {
 
 .page-nav {
   display: flex;
-  gap: 10px;
+  gap: 4px;
   color: var(--muted);
   font-size: 0.94rem;
 }
 
 .nav-button {
-  padding: 10px 14px;
-  border-radius: 999px;
+  padding: 8px 10px;
+  border-radius: 0;
   background: transparent;
   color: var(--muted);
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  border-bottom: 2px solid transparent;
 }
 
 .nav-button.active,
 .nav-button:hover {
-  background: color-mix(in srgb, var(--accent) 12%, transparent);
   color: var(--accent);
+  border-bottom-color: var(--accent);
 }
 
 .header-tools {
@@ -134,7 +133,7 @@ h1 span {
 .theme-toggle {
   padding: 10px 14px;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 3px;
   background: var(--surface);
   color: var(--text);
   cursor: pointer;
@@ -154,7 +153,7 @@ h1 span {
   max-width: 1064px;
   margin: 0 auto;
   padding: 82px 28px;
-  scroll-margin-top: 24px;
+  scroll-margin-top: 16px;
 }
 
 .page-panel {
@@ -178,13 +177,14 @@ h1 span {
 
 h1 {
   margin: 18px 0 14px;
-  font: 800 clamp(2.7rem, 5.5vw, 4.4rem) / 1.08 Manrope, sans-serif;
-  letter-spacing: -2.8px;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  line-height: 1.15;
 }
 
 .hero h2 {
   margin-bottom: 17px;
-  font: 700 clamp(1.1rem, 2.4vw, 1.45rem) / 1.45 Manrope, sans-serif;
+  font-size: clamp(1.1rem, 2.4vw, 1.4rem);
+  line-height: 1.45;
 }
 
 .intro,
@@ -209,16 +209,11 @@ h1 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 13px 18px;
-  border: 1px solid transparent;
-  border-radius: 10px;
+  padding: 10px 14px;
+  border: 1px solid var(--accent);
+  border-radius: 3px;
   font-weight: 700;
   cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.button:hover {
-  transform: translateY(-2px);
 }
 
 .primary {
@@ -242,41 +237,25 @@ h1 {
 }
 
 .portrait-wrap {
-  position: relative;
   display: grid;
   place-items: center;
-  min-height: 390px;
-}
-
-.portrait-glow {
-  position: absolute;
-  width: 310px;
-  height: 310px;
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--accent) 15%, transparent);
-  filter: blur(2px);
+  min-height: 340px;
 }
 
 .portrait {
-  position: relative;
-  width: min(100%, 350px);
-  height: 390px;
-  border: 5px solid var(--surface);
-  border-radius: 170px 170px 26px 26px;
+  width: min(100%, 300px);
+  height: 340px;
+  border: 1px solid var(--border);
   object-fit: cover;
   object-position: center top;
-  box-shadow: 0 24px 70px #25234b20;
 }
 
 .portrait-tag {
-  position: absolute;
-  right: 0;
-  bottom: 10px;
-  padding: 12px 14px;
+  justify-self: center;
+  margin-top: 10px;
+  padding: 8px 10px;
   border: 1px solid var(--border);
-  border-radius: 10px;
   background: var(--surface);
-  box-shadow: 0 10px 30px #25234b12;
   font-size: 0.8rem;
   font-weight: 700;
 }
@@ -287,27 +266,23 @@ h1 {
 
 .section-heading {
   margin-bottom: 34px;
-  text-align: center;
 }
 
 .section-heading h2 {
   margin-bottom: 12px;
-  font: 800 clamp(2rem, 4vw, 2.8rem) Manrope, sans-serif;
-  letter-spacing: -1.4px;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
 }
 
 .section-heading > p:not(.eyebrow) {
   max-width: 620px;
-  margin: 0 auto;
+  margin: 0;
 }
 
 .about-text {
   max-width: 760px;
   margin: 0 auto 34px;
-  text-align: center;
 }
 
-.skill-grid,
 .skill-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -317,7 +292,6 @@ h1 {
 .skill-card {
   padding: 24px;
   border: 1px solid var(--border);
-  border-radius: 16px;
   background: var(--surface);
 }
 
@@ -327,15 +301,15 @@ h1 {
   width: 42px;
   height: 42px;
   margin-bottom: 17px;
-  border-radius: 12px;
-  background: color-mix(in srgb, var(--accent) 13%, transparent);
+  border: 1px solid var(--border);
+  background: var(--surface);
   color: var(--accent);
   font-size: 1.35rem;
 }
 
 .skill-card h3 {
   margin-bottom: 9px;
-  font: 700 1.05rem Manrope, sans-serif;
+  font-size: 1.05rem;
 }
 
 .skill-card p {
@@ -358,9 +332,8 @@ h1 {
   gap: 16px;
   max-width: 600px;
   margin: 0 auto;
-  padding: 25px;
+  padding: 20px;
   border: 1px solid var(--border);
-  border-radius: 18px;
   background: var(--surface);
 }
 
@@ -376,7 +349,7 @@ h1 {
   width: 100%;
   padding: 13px 14px;
   border: 1px solid var(--border);
-  border-radius: 9px;
+  border-radius: 3px;
   background: var(--bg);
   color: var(--text);
   outline: none;
@@ -466,22 +439,17 @@ h1 {
   }
 
   .portrait-wrap {
-    min-height: 350px;
+    min-height: 0;
+    justify-items: start;
   }
 
   .portrait {
-    width: min(100%, 310px);
-    height: 340px;
-  }
-
-  .portrait-glow {
-    width: 270px;
-    height: 270px;
+    width: min(100%, 280px);
+    height: 320px;
   }
 
   .portrait-tag {
-    right: 2px;
-    bottom: 0;
+    justify-self: start;
   }
 
   .skill-grid {
