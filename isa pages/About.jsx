@@ -22,7 +22,10 @@ export default function About() {
         <article className="skill-card">
           <span className="skill-icon">✳</span>
           <h3>Graphic Design</h3>
-          <p>Flyers, social media graphics, promotional designs, and branding concepts.</p>
+          <p>
+            Flyers, social media graphics, promotional designs, and branding
+            concepts.
+          </p>
         </article>
         <article className="skill-card">
           <span className="skill-icon">↗</span>

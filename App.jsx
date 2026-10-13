@@ -7,6 +7,7 @@ function RealTimeClock() {
   const [currentTime, setCurrentTime] = useState(() => new Date());
 
   useEffect(() => {
+    // Update the clock every minute and stop the timer when this component closes.
     const timerId = window.setInterval(() => setCurrentTime(new Date()), 60000);
     return () => window.clearInterval(timerId);
   }, []);
@@ -22,6 +23,7 @@ function RealTimeClock() {
 }
 
 export default function App() {
+  // These values control the selected page and the site's color theme.
   const [dark, setDark] = useState(false);
   const [page, setPage] = useState("home");
 
@@ -30,8 +32,14 @@ export default function App() {
   }
 
   function renderPage() {
-    if (page === "about") return <About />;
-    if (page === "contact") return <Contact />;
+    if (page === "about") {
+      return <About />;
+    }
+
+    if (page === "contact") {
+      return <Contact />;
+    }
+
     return <Home onNavigate={showPage} />;
   }
 
@@ -44,7 +52,9 @@ export default function App() {
           onClick={() => showPage("home")}
           aria-label="Isa Hosea home"
         >
-          <span className="logo">IH<span>.</span></span>
+          <span className="logo">
+            IH<span>.</span>
+          </span>
         </button>
         <nav aria-label="Main navigation" className="page-nav">
           <button

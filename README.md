@@ -2,6 +2,9 @@
 
 This is a personal website for Isa Hosea. It is built with React and Vite.
 
+React lets the website be made from reusable parts called components. Vite
+starts the website during development and creates the files used for publishing.
+
 ## Run the website
 
 1. Install [Node.js](https://nodejs.org/) if it is not already installed.
@@ -28,7 +31,11 @@ This is a personal website for Isa Hosea. It is built with React and Vite.
 
 ## Project files
 
-- `App.jsx` contains the main layout, navigation, and dark-mode button.
-- `isa pages/` contains the Home, About, and Contact page components.
-- `style.css` contains the website's colors, layout, and responsive styles.
-- `assets/` contains images used by the website.
+- `main.jsx` starts the React app.
+- `App.jsx` contains the header, navigation, clock, and dark-mode button.
+- `isa pages/Home.jsx` contains the home page.
+- `isa pages/About.jsx` contains the about page and skill cards.
+- `isa pages/Contact.jsx` contains the contact form.
+- `style.css` contains colors, layout, and styles for different screen sizes.
+- `assets/` contains images used by the pages.
+- `index.html` is the page the browser opens before React starts.

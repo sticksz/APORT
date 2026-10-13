@@ -11,7 +11,9 @@ export default function Contact() {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    const formData = new FormData(event.currentTarget);
+    // Save the form before waiting for the email service to reply.
+    const form = event.currentTarget;
+    const formData = new FormData(form);
     const name = String(formData.get("name") || "").trim();
     const email = String(formData.get("email") || "").trim();
     const message = String(formData.get("message") || "").trim();
@@ -40,12 +42,16 @@ export default function Contact() {
       });
 
       const result = await response.json();
-      if (!response.ok || (result.success !== "true" && result.success !== true)) {
-        throw new Error(result.message || "The email service could not accept your message.");
+      const messageWasSent = result.success === "true" || result.success === true;
+
+      if (!response.ok || !messageWasSent) {
+        throw new Error(
+          result.message || "The email service could not accept your message."
+        );
       }
 
       setStatus("Message sent. Thank you for getting in touch!");
-      event.currentTarget.reset();
+      form.reset();
     } catch (error) {
       setStatus(
         error instanceof Error
@@ -67,28 +73,65 @@ export default function Contact() {
       <form className="contact-form" onSubmit={handleSubmit}>
         <label>
           Your name
-          <input name="name" type="text" maxLength="100" autoComplete="name" placeholder="Enter your name" required />
+          <input
+            name="name"
+            type="text"
+            maxLength="100"
+            autoComplete="name"
+            placeholder="Enter your name"
+            required
+          />
         </label>
         <label>
           Your email
-          <input name="email" type="email" maxLength="254" autoComplete="email" placeholder="you@example.com" required />
+          <input
+            name="email"
+            type="email"
+            maxLength="254"
+            autoComplete="email"
+            placeholder="you@example.com"
+            required
+          />
         </label>
         <label>
           Your message
-          <textarea name="message" rows="5" maxLength="3000" placeholder="Tell me about your project..." required />
+          <textarea
+            name="message"
+            rows="5"
+            maxLength="3000"
+            placeholder="Tell me about your project..."
+            required
+          />
         </label>
-        <button className="button primary submit-button" type="submit" disabled={isSending}>
+        <button
+          className="button primary submit-button"
+          type="submit"
+          disabled={isSending}
+        >
           {isSending ? "Sending..." : "Send message"}
         </button>
-        {status && <p className="form-note" role="status">{status}</p>}
+        {status && (
+          <p className="form-note" role="status">
+            {status}
+          </p>
+        )}
         <p className="small-note">
           Messages are sent securely through FormSubmit to my email. On the first
           submission, I need to confirm my address with their activation email.
           You can also reach me on WhatsApp.
         </p>
-        <a className="whatsapp-link" href={WHATSAPP_URL} target="_blank" rel="noreferrer">Message me on WhatsApp ↗</a>
+        <a
+          className="whatsapp-link"
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Message me on WhatsApp ↗
+        </a>
       </form>
-      <p className="public-email">Email: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></p>
+      <p className="public-email">
+        Email: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+      </p>
     </section>
   );
 }
