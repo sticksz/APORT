@@ -1,5 +1,5 @@
 import React from "react";
-import portrait from "../assets/isa-hosea.png";
+import portrait from "../assets/isa-hosea.jpg";
 
 // Keep profile links here so they are easy to update.
 const LINKEDIN_URL = "https://www.linkedin.com/in/isa-hosea-99bb6b369/";

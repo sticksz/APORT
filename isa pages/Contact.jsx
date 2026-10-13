@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 const CONTACT_EMAIL = "Hoseaisa2783@gmail.com";
 const WHATSAPP_URL = "https://wa.me/2349161282666";
 const FORM_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`;
 
 export default function Contact() {
+  const formRef = useRef(null);
   const [status, setStatus] = useState("");
   const [isSending, setIsSending] = useState(false);
 
@@ -51,7 +52,7 @@ export default function Contact() {
       }
 
       setStatus("Message sent. Thank you for getting in touch!");
-      form.reset();
+      formRef.current?.reset();
     } catch (error) {
       setStatus(
         error instanceof Error
@@ -70,7 +71,7 @@ export default function Contact() {
         <h2>Have a project in mind?</h2>
         <p>Tell me a little about it. I'll be happy to hear from you.</p>
       </div>
-      <form className="contact-form" onSubmit={handleSubmit}>
+      <form ref={formRef} className="contact-form" onSubmit={handleSubmit}>
         <label>
           Your name
           <input
